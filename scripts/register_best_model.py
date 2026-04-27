@@ -1,9 +1,8 @@
 from azure.ai.ml.entities import Model
 from azure.ai.ml.constants import AssetTypes
 
-#Step 1 
 
-    ml_client = MLClient(
+ml_client = MLClient(
     DefaultAzureCredential(),
     subscription_id="e2486e78-1f52-4aaf-8069-79e7ff451888",
     resource_group_name="AzureAIResourceGroup",
