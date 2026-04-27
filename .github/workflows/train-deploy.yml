@@ -2,6 +2,9 @@ name: Train Register Deploy
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   train-register-deploy:
