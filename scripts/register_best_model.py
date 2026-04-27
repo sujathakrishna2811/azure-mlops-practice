@@ -1,6 +1,8 @@
 from azure.ai.ml.entities import Model
 from azure.ai.ml.constants import AssetTypes
-
+from azure.ai.ml import MLClient, command, Input
+from azure.ai.ml.sweep import Choice
+from azure.identity import DefaultAzureCredential
 
 ml_client = MLClient(
     DefaultAzureCredential(),
