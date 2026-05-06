@@ -12,9 +12,9 @@ import datetime
 # -----------------------------
 ml_client = MLClient(
     DefaultAzureCredential(),
-    subscription_id="e2486e78-1f52-4aaf-8069-79e7ff451888",
-    resource_group_name="AzureAIResourceGroup",
-    workspace_name="ml_ws_practice"
+    subscription_id="xxxxx",
+    resource_group_name="xxxx",
+    workspace_name="xxxx"
 )
 
 # -----------------------------
