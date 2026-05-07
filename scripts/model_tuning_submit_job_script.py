@@ -73,3 +73,6 @@ returned_sweep_job = ml_client.jobs.create_or_update(sweep_job)
 print("Sweep job submitted:", returned_sweep_job.name)
 print("Status:", returned_sweep_job.status)
 print("Studio URL:", returned_sweep_job.studio_url)
+
+with open("sweep_job_name.txt", "w") as f:
+    f.write(returned_sweep_job.name)
