@@ -28,7 +28,11 @@ while True:
     time.sleep(60)
 
 if job.status != "Completed":
-    raise Exception(f"Sweep job did not complete successfully. Status: {job.status}")
+    print("Sweep job failed or did not complete.")
+    print("Sweep job name:", sweep_job_name)
+    print("Sweep job status:", job.status)
+    print("Open this job in Azure ML Studio and check child run logs.")
+    raise Exception(f"Cannot register model because sweep job status is {job.status}")
 
 print("Job properties:", job.properties)
 
