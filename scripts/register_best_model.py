@@ -5,6 +5,7 @@ import argparse
 from azure.ai.ml import MLClient
 from azure.identity import DefaultAzureCredential
 import os
+import time
 
 ml_client = MLClient(
     DefaultAzureCredential(),
@@ -17,10 +18,21 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--sweep_job_name", required=True)
 args = parser.parse_args()
 sweep_job_name = args.sweep_job_name
-job = ml_client.jobs.get(sweep_job_name)
+while True:
+    job = ml_client.jobs.get(sweep_job_name)
+    print("Sweep job status:", job.status)
+
+    if job.status in ["Completed", "Failed", "Canceled"]:
+        break
+
+    time.sleep(60)
+
+if job.status != "Completed":
+    raise Exception(f"Sweep job did not complete successfully. Status: {job.status}")
+
+print("Job properties:", job.properties)
 
 best_job_name = job.properties["best_child_run_id"]
-
 print("Best job:", best_job_name)
 
 #Register BEST model (automatic)
