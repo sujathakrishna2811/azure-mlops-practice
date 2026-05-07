@@ -39,7 +39,7 @@ jobs:
         run: python scripts/model_tuning_submit_job_script.py
 
       - name: Register best model
-        run: python scripts/register_best_model.py\ 
+        run: python scripts/register_best_model.py \ 
              --sweep_job_name gentle_tree_p9x21
 
       - name: Deploy model
