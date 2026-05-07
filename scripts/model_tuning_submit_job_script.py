@@ -3,15 +3,17 @@ from azure.ai.ml import MLClient, command, Input
 from azure.ai.ml.sweep import Choice
 from azure.ai.ml.constants import AssetTypes, InputOutputModes
 from azure.identity import DefaultAzureCredential
+import os
 
 # -----------------------------
 # STEP 1: Connect to workspace
 # -----------------------------
+
 ml_client = MLClient(
     DefaultAzureCredential(),
-    subscription_id="xxxxxxxxx",
-    resource_group_name="xxxxxx",
-    workspace_name="xxxxx"
+    subscription_id=os.environ["AZURE_SUBSCRIPTION_ID"],
+    resource_group_name=os.environ["AZURE_RESOURCE_GROUP"],
+    workspace_name=os.environ["AZURE_ML_WORKSPACE"]
 )
 
 # -----------------------------
