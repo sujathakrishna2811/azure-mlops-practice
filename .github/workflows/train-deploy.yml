@@ -40,8 +40,11 @@ jobs:
 
       - name: Register best model
         run: |
-          python scripts/register_best_model.py \
-            --sweep_job_name strong_garden_m6tnm4cmdb
+            SWEEP_JOB_NAME=$(cat sweep_job_name.txt)
+            echo "Registering best model from sweep job: $SWEEP_JOB_NAME"
+
+            python scripts/register_best_model.py \
+              --sweep_job_name $SWEEP_JOB_NAME
 
       - name: Deploy model
         run: python scripts/model_deployment_script.py
