@@ -25,10 +25,10 @@ endpoint_name = "telco-endpoint"
 deployment_name = "blue"
 
 registered_model_name = "telco-churn-pipeline-model"
-registered_model_version = "1"
+registered_model_version = "6"
 
 inference_environment_name = "telco-inference-env"
-inference_environment_version = "1"
+inference_environment_version = "2"
 
 # -----------------------------
 # STEP 3: Create endpoint
