@@ -46,7 +46,7 @@ sweep_job = command(
         "max_depth": Choice(values=[5, 10, 20]),
         "min_samples_split": Choice(values=[2, 5, 10]),
     },
-    environment="azureml:telco-sklearn-env:6",
+    environment="azureml:telco-sklearn-env:7",
     compute="mlcomputerclusterpractice",
     display_name="telco-rf-sweep-job",
     experiment_name="telco-rf-sweep"
