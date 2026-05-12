@@ -1,0 +1,13 @@
+name: titanic-inference-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - azureml-inference-server-http
+      - pandas
+      - numpy
+      - scikit-learn
+      - joblib
+      - pydantic
