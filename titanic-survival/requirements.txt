@@ -1,0 +1,7 @@
+scikit-learn==1.5.2
+pandas
+joblib
+mlflow
+azure-ai-ml
+azure-identity
+pydantic>=2
