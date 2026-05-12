@@ -1,0 +1,8 @@
+azure-ai-ml
+azure-identity
+azure-core
+mlflow
+pandas
+scikit-learn
+joblib
+pydantic
