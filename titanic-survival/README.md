@@ -48,13 +48,13 @@ The goal of this project is to demonstrate an end-to-end Azure Machine Learning 
 
 Machine Learning Workflow
 
-1. Data Asset
+#1. Data Asset
 
 The Titanic dataset is stored as an Azure ML data asset: Titanic_Survival_Dataset
 
 The training job reads this registered data asset during execution.
 
-2. Training and Tuning
+#2. Training and Tuning
 
 The model training script performs:
 
@@ -71,7 +71,7 @@ Model artifact saving
 
 The model is saved as: outputs/model_pipeline.pkl
 
-3. Hyperparameter Sweep
+#3. Hyperparameter Sweep
 
 Azure ML sweep job tunes the following Random Forest parameters:
 
@@ -81,12 +81,12 @@ min_samples_split
 
 The primary metric used for model selection is: accuracy
 
-4. Model Registration
+#4. Model Registration
 
 After the sweep job completes, the best child run is selected automatically.
 The best model is registered in Azure ML as: titanic-survival-pipeline-model
 
-5. Deployment
+#5. Deployment
 
 The registered model is deployed to an Azure ML managed online endpoint: titanic-endpoint
 
