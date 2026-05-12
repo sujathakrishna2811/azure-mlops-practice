@@ -46,80 +46,71 @@ The goal of this project is to demonstrate an end-to-end Azure Machine Learning 
 ├── requirements.txt
 └── README.md
 
-Machine Learning Workflow
+# Machine Learning Workflow:
 
-#1. Data Asset
+# 1. Data Asset
 
-The Titanic dataset is stored as an Azure ML data asset: Titanic_Survival_Dataset
+- The Titanic dataset is stored as an Azure ML data asset: Titanic_Survival_Dataset
+- The training job reads this registered data asset during execution.
 
-The training job reads this registered data asset during execution.
-
-#2. Training and Tuning
+# 2. Training and Tuning
 
 The model training script performs:
 
-Missing value handling
-Feature engineering
-Train-test split
-Preprocessing using ColumnTransformer
-One-hot encoding for categorical variables
-Scaling for numeric variables
-Random Forest model training
-Accuracy and ROC-AUC evaluation
-MLflow metric logging
-Model artifact saving
+- Missing value handling
+- Feature engineering
+- Train-test split
+- Preprocessing using ColumnTransformer
+- One-hot encoding for categorical variables
+- Scaling for numeric variables
+- Random Forest model training
+- Accuracy and ROC-AUC evaluation
+- MLflow metric logging
+- Model artifact saving
 
 The model is saved as: outputs/model_pipeline.pkl
 
-#3. Hyperparameter Sweep
+# 3. Hyperparameter Sweep
 
-Azure ML sweep job tunes the following Random Forest parameters:
+- Azure ML sweep job tunes the following Random Forest parameters:
+    - n_estimators
+    - max_depth
+    - min_samples_split
+- The primary metric used for model selection is: accuracy
 
-n_estimators
-max_depth
-min_samples_split
+# 4. Model Registration
 
-The primary metric used for model selection is: accuracy
+- After the sweep job completes, the best child run is selected automatically.
+- The best model is registered in Azure ML as: titanic-survival-pipeline-model
 
-#4. Model Registration
+# 5. Deployment
 
-After the sweep job completes, the best child run is selected automatically.
-The best model is registered in Azure ML as: titanic-survival-pipeline-model
+- The registered model is deployed to an Azure ML managed online endpoint: titanic-endpoint
+- Deployment name: blue
+- The deployment uses: src/score.py for inference.
 
-#5. Deployment
+# 6. GitHub Actions Workflow
 
-The registered model is deployed to an Azure ML managed online endpoint: titanic-endpoint
+- The workflow is defined in: .github/workflows/train-deploy.yml
+- It runs on: Manual trigger using workflow_dispatch. Push to the main branch
+- The workflow performs the following steps:
 
-Deployment name: blue
+  - Checkout repository
+  - Set up Python
+  - Install dependencies
+  - Log in to Azure
+  - Submit Azure ML sweep job
+  - Register the best model
+  - Deploy the model to an online endpoint
+  - Required GitHub Secrets
 
-The deployment uses: src/score.py for inference.
+- The following secrets are configured in GitHub:
+  - AZURE_CREDENTIALS
+  - AZURE_SUBSCRIPTION_ID
+  - AZURE_RESOURCE_GROUP
+  - AZURE_ML_WORKSPACE
 
-GitHub Actions Workflow
-
-The workflow is defined in: .github/workflows/train-deploy.yml
-
-It runs on:
-
-Manual trigger using workflow_dispatch. Push to the main branch
-
-The workflow performs the following steps:
-
-Checkout repository
-Set up Python
-Install dependencies
-Log in to Azure
-Submit Azure ML sweep job
-Register the best model
-Deploy the model to an online endpoint
-Required GitHub Secrets
-
-The following secrets must be configured in GitHub:
-
-AZURE_CREDENTIALS
-AZURE_SUBSCRIPTION_ID
-AZURE_RESOURCE_GROUP
-AZURE_ML_WORKSPACE
-Sample Input for Endpoint
+# 7. Sample Input for Endpoint
 {
   "Pclass": 3,
   "Sex": "male",
@@ -129,7 +120,8 @@ Sample Input for Endpoint
   "Fare": 7.25,
   "Embarked": "S"
 }
-Sample Output
+
+# 8. Sample Output
 {
   "model_version": "4",
   "deployment": "blue",
@@ -137,29 +129,29 @@ Sample Output
   "probabilities": [0.18],
   "latency_ms": 25
 }
-Features Used
+
+# 9. Features Used:
 
 The model uses the following input features:
+- Pclass
+- Sex
+- Age
+- SibSp
+- Parch
+- Fare
+- Embarked
 
-Pclass
-Sex
-Age
-SibSp
-Parch
-Fare
-Embarked
+# 10. Additional features are created during preprocessing:
 
-Additional features are created during preprocessing:
+- Family_Size = SibSp + Parch
+- Alone = 1 if Family_Size is 0 else 0
+- Model Evaluation Metrics
 
-Family_Size = SibSp + Parch
-Alone = 1 if Family_Size is 0 else 0
-Model Evaluation Metrics
+# 11. The model logs the following metrics to MLflow:
 
-The model logs the following metrics to MLflow:
-
-accuracy
-val_auc
-Notes
+- accuracy
+- val_auc
+- Notes
 
 This project is intended as a learning and portfolio project to demonstrate practical MLOps skills using Azure Machine Learning and GitHub Actions.
 
