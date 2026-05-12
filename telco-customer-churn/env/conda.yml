@@ -1,0 +1,15 @@
+name: telco-env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - pandas
+      - numpy
+      - matplotlib
+      - seaborn
+      - scikit-learn
+      - joblib
+      - azureml-mlflow
+      - "mlflow<=2.16.2"
