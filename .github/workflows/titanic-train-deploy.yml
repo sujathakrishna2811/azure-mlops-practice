@@ -34,15 +34,15 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Submit sweep job
-        run: python scripts/model_tuning_submit_job_script.py
+        run: python titanic-survival/scripts/model_tuning_submit_job_script.py
 
       - name: Register best model
         run: |
             SWEEP_JOB_NAME=$(cat sweep_job_name.txt)
             echo "Registering best model from sweep job: $SWEEP_JOB_NAME"
 
-            python scripts/register_best_model.py \
+            python titanic-survival/scripts/register_best_model.py \
               --sweep_job_name $SWEEP_JOB_NAME
 
       - name: Deploy model
-        run: python scripts/model_deployment_script.py
+        run: python titanic-survival/scripts/model_deployment_script.py
