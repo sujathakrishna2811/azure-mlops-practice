@@ -16,7 +16,6 @@ The goal of this project is to demonstrate an end-to-end Azure Machine Learning 
 - Managed online endpoint deployment
 - GitHub Actions CI/CD automation
 
----
 
 ## Tech Stack
 
@@ -30,21 +29,18 @@ The goal of this project is to demonstrate an end-to-end Azure Machine Learning 
 
 ## Project Structure
 
-├── src/
-│   ├── train_tuning.py
-│   └── score.py
-│
-├── scripts/
-│   ├── model_tuning_submit_job_script.py
-│   ├── register_best_model.py
-│   └── model_deployment_script.py
-│
-├── .github/
-│   └── workflows/
-│       └── train-deploy.yml
-│
-├── requirements.txt
-└── README.md
+- src
+  - train_tuning.py
+  - score.py
+- scripts/
+  -  model_tuning_submit_job_script.py
+  -  register_best_model.py
+  -  model_deployment_script.py
+- .github/
+    -  workflows/
+        - train-deploy.yml
+- requirements.txt
+- README.md
 
 # Machine Learning Workflow:
 
@@ -151,7 +147,8 @@ The model uses the following input features:
 
 - accuracy
 - val_auc
-- Notes
+
+# Notes
 
 This project is intended as a learning and portfolio project to demonstrate practical MLOps skills using Azure Machine Learning and GitHub Actions.
 
