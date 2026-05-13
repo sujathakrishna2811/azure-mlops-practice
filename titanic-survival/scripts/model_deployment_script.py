@@ -55,7 +55,7 @@ deployment = ManagedOnlineDeployment(
         code="titanic-survival/src/",
         scoring_script="score.py",
     ),
-    instance_type="Standard_DS3_v2",
+    instance_type="Standard_D2AS_v4",
     instance_count=1,
 )
 
