@@ -6,6 +6,7 @@ from azure.ai.ml.entities import (
 )
 from azure.identity import DefaultAzureCredential
 import datetime
+import os
 
 # -----------------------------
 # STEP 1: Connect to workspace
