@@ -22,7 +22,7 @@ ml_client = MLClient(
 # -----------------------------
 # STEP 2: Set names
 # -----------------------------
-endpoint_name = "titanic-endpoint" 
+endpoint_name = "titanic-endpoint-test-v1" 
 deployment_name = "blue"
 
 registered_model_name = "titanic-survival-pipeline-model"
