@@ -1,4 +1,4 @@
-name: Telco Train Register Deploy
+name: Train Register Deploy
 on:
   workflow_dispatch:
  
