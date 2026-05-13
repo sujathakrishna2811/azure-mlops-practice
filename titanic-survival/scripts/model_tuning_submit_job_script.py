@@ -26,7 +26,7 @@ data = ml_client.data.get(
 # STEP 3: Define base command job
 # -----------------------------
 sweep_job = command(
-    code="./",
+    code="titanic-survival",
     command=(
         "python src/train_tuning.py "
         "--data ${{inputs.data}} "
