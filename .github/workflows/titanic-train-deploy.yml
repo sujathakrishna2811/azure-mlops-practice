@@ -1,5 +1,5 @@
 
-name: Train Register Deploy
+name: Titanic Train Register Deploy
 
 on:
   workflow_dispatch:
