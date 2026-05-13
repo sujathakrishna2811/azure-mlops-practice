@@ -51,7 +51,7 @@ deployment = ManagedOnlineDeployment(
     model=f"azureml:{registered_model_name}:{registered_model_version}",
     environment=f"azureml:{inference_environment_name}:{inference_environment_version}",
     code_configuration=CodeConfiguration(
-        code="src/",
+        code="titanic-survival/src/",
         scoring_script="score.py",
     ),
     instance_type="Standard_DS3_v2",
